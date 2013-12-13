@@ -1,0 +1,13 @@
+<div>
+  <form>
+    <span class='prompt'>
+      <span class='user'>kmcd</span>
+      <span class='go'> -> </span>
+    </span>
+    
+    <input autofocus name='input' type='text' class='cmdline' 
+      autocomplete='off' value="<%= @command.output.html_safe %>" />
+  </form>
+
+  <%= render partial:'commands/new' %>
+</div>
