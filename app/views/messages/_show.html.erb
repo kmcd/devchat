@@ -1,4 +1,6 @@
 <div>
+  <%# TODO: use a div instead of form to display last command %>
+
   <form>
     <span class='prompt'>
       <span class='user'>kmcd</span>
@@ -6,7 +8,7 @@
     </span>
     
     <input autofocus name='input' type='text' class='cmdline' 
-      autocomplete='off' value="<%= @command.output.html_safe %>" />
+      autocomplete='off' value="<%= @command.input %>" />
   </form>
 
   <%= render partial:'commands/new' %>

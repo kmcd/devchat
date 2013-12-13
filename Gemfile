@@ -44,6 +44,11 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'looksee'
+  gem 'commands'
+end
+
 gem 'puma'
 group(:development, :production) { gem 'foreman' }
 gem 'rails_12factor', group: :production

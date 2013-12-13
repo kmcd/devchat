@@ -1,19 +1,19 @@
 class CommandsController < ApplicationController
-  # TODO: Create command in DB
   def create
+    @command = Command.create_and_become command_params
+    
     respond_to do |format|
-      format.js { redirect_to command_url }
+      format.js { render action }
     end
   end
   
   private
   
-  # TODO: unit test command routing
-  def command_url
-    case params[:command]
-      when /\/room/ ; room_url 1
-      when /\/msg/  ; message_url 1
-      else          ; message_url 1, params[:command]
-    end
+  def action
+    @command.type.downcase.pluralize << '/show'
+  end
+  
+  def command_params
+    params.require(:command).permit :input
   end
 end
