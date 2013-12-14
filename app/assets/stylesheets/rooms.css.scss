@@ -4,7 +4,7 @@
 
 html, html * { 
   font-family: "Inconsolata", "courier new", monospace; 
-  font-size: 16px; 
+  font-size: 14px;
 }
 
 input { 
@@ -25,5 +25,4 @@ form, input { margin: 0; padding: 0;}
 html * { margin: 0; padding: 0; }
 html { padding: 1em; }
 
-form.command { padding: 0.6em 0 0.4em 0; }
 form.command input { width: 90%; }

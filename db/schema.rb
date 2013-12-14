@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213172729) do
+ActiveRecord::Schema.define(version: 20131214111417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "commands", force: true do |t|
     t.datetime "created_at"
@@ -22,20 +23,12 @@ ActiveRecord::Schema.define(version: 20131213172729) do
     t.text     "input"
     t.integer  "user_id"
     t.string   "type"
-  end
-
-  add_index "commands", ["user_id"], name: "index_commands_on_user_id", using: :btree
-
-  create_table "polled_messages", force: true do |t|
-    t.integer  "user_id"
+    t.text     "output"
     t.integer  "room_id"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "polled_messages", ["room_id"], name: "index_polled_messages_on_room_id", using: :btree
-  add_index "polled_messages", ["user_id"], name: "index_polled_messages_on_user_id", using: :btree
+  add_index "commands", ["room_id"], name: "index_commands_on_room_id", using: :btree
+  add_index "commands", ["user_id"], name: "index_commands_on_user_id", using: :btree
 
   create_table "rooms", force: true do |t|
     t.string   "name"
