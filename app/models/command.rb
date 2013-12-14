@@ -1,5 +1,6 @@
 class Command < ActiveRecord::Base
-  before_create :set_type
+  VALID = []
+  before_create :set_type # TODO: create virtual attr instead of callback
   
   # TODO: use an object builder/factory which nicely handles aliases etc.
   # e.g. CommandBuilder.new attributes
@@ -9,14 +10,12 @@ class Command < ActiveRecord::Base
     command.becomes command.type.constantize
   end
   
-  def output
-    ""
+  def self.inherited(klass)
+    VALID << klass
+    super
   end
   
-  private
-  
   def set_type
-    # FIXME: prevent arbitrary command types; eg Foo
     self.type =  message? ? 'Message' : switch.capitalize
   end
 
@@ -25,6 +24,6 @@ class Command < ActiveRecord::Base
   end
   
   def message?
-    !input.start_with? '/'
+    !VALID.map(&:to_s).include?(switch)
   end
 end

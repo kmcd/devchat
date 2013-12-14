@@ -49,6 +49,10 @@ group :development do
   gem 'commands'
 end
 
+group :test do
+  gem 'turn'
+end
+
 gem 'puma'
 group(:development, :production) { gem 'foreman' }
 gem 'rails_12factor', group: :production
