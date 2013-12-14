@@ -1,7 +1,8 @@
 class CommandsController < ApplicationController
   def create
     # TODO: move to factory/builder and instantiate instance variable
-    @command = Command.create_and_become command_params
+    @command = Command.create_and_become command_params,
+      session[:current_user], session[:current_room]
     
     respond_to do |format|
       format.js { render action }

@@ -1,3 +1,29 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+html, html * { 
+  font-family: "Inconsolata", "courier new", monospace; 
+  font-size: 14px;
+}
+
+input { 
+  border: none; 
+  background-color: rgb(255, 255, 255);
+  text-shadow: none;
+  cursor: auto;
+  outline:none;
+}
+
+form, input { margin: 0; padding: 0;}
+
+.prompt { color: grey; }
+.room   { color: grey; }
+.user   { color: grey; }
+.go     { color: grey; }
+
+html * { margin: 0; padding: 0; }
+html { padding: 1em; }
+
+form.command input { width: 90%; }
