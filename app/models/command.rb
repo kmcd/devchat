@@ -1,5 +1,5 @@
 class Command < ActiveRecord::Base
-  VALID = []
+  SUB_COMMANDS = []
   before_create :set_type # TODO: create virtual attr instead of callback
   
   # TODO: use an object builder/factory which nicely handles aliases etc.
@@ -11,12 +11,16 @@ class Command < ActiveRecord::Base
   end
   
   def self.inherited(klass)
-    VALID << klass
+    SUB_COMMANDS << klass
     super
   end
   
   def set_type
     self.type =  message? ? 'Message' : switch.capitalize
+  end
+  
+  def action
+    type.downcase
   end
 
   def switch
@@ -24,6 +28,7 @@ class Command < ActiveRecord::Base
   end
   
   def message?
-    !VALID.map(&:to_s).include?(switch)
+    return true unless input.start_with? '/'
+    !SUB_COMMANDS.map(&:to_s).include?(switch)
   end
 end

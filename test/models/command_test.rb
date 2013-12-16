@@ -6,8 +6,7 @@ class CommandTest < ActiveSupport::TestCase
   end
   
   test "valid command types" do
-    assert_valid_command :message
-    assert_valid_command :room
+    %i[ message room ].each {|_| assert_valid_command _ }
   end
   
   test "no arbitrary commands" do

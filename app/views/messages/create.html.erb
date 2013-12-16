@@ -1,7 +1,6 @@
-<%# TODO: use a div instead of form to display last command %>
 <form class='command' id='command_1'>
   <%= render partial:'commands/prompt' %>
   
   <input name='input' type='text' class='cmdline' 
-    autocomplete='off' value="<%= @command.input %>" readonly />
+    autocomplete='off' value="<%= @message.input %>" readonly />
 </form>

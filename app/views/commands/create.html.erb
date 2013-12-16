@@ -2,5 +2,7 @@
   <%= render partial:'commands/prompt' %>
   
   <input name='input' type='text' class='cmdline' 
-    autocomplete='off' value="<%= @command.input %>" readonly />
+    autocomplete='off' value="<%= params[:command][:input] %>" readonly />
 </form>
+
+<h1>Unknown command</h1>
