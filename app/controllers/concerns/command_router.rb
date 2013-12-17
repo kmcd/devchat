@@ -3,7 +3,7 @@ class CommandRouter
   attr_reader :command
     
   def initialize(input)
-    substitue_aliases if @command = input.strip[/(?<=\/)[^\s]*/]
+    substitue_aliases if @command = input.strip[/^(?<=\/)[^\s]*/]
   end
   
   def route

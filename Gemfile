@@ -53,6 +53,7 @@ group :test do
   gem 'turn'
 end
 
+gem 'rails_autolink'
 gem 'puma'
 group(:development, :production) { gem 'foreman' }
 gem 'rails_12factor', group: :production

@@ -7,6 +7,7 @@ class CommandRouterTest < ActiveSupport::TestCase
   
   test "Hello -> /messages" do
     assert_message_route "Hello"
+    assert_message_route "http://foo.com"
   end
   
   test "/message Hello -> /messages" do

@@ -1,6 +1,5 @@
-<form class='command' id='command_1'>
+<form class='command'>
   <%= render partial:'commands/prompt' %>
   
-  <input name='input' type='text' class='cmdline' 
-    autocomplete='off' value="<%= @message.input %>" readonly />
+  <%= content_tag :span, auto_link(@message.input) %>
 </form>
