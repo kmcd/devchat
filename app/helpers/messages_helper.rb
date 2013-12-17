@@ -1,7 +1,15 @@
 module MessagesHelper
+  URL_REGEX = /(
+    (?:ed2k|ftp|http|https|irc|mailto|news|gopher|nntp|telnet|webcal|xmpp|
+    callto|feed|svn|urn|aim|rsync|tag|ssh|sftp|rtsp|afs|file)
+    \S+)/ix
+  
   def markup(text)
-    return convert_single_image(text) if single_image(text)
-    auto_link text
+    return convert_single_image(text) if convert_single_image(text)
+    text.split(URL_REGEX).each do |line|
+      concat auto_link(line).blank? ? line : auto_link(line).html_safe
+    end
+    nil
   end
   
   def convert_single_image(text)
