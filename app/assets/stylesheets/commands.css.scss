@@ -10,15 +10,17 @@ html, html * {
 }
 
 html { padding: 1em; }
-form, input { margin: 0; padding: 0; }
+form, textarea { margin: 0; padding: 0; }
 
-input { 
-  border: none; 
+textarea { 
   background-color: rgb(255, 255, 255);
   text-shadow: none;
   cursor: auto;
   outline:none;
+  color: black;
+  resize: none;
+  width: 90%;
+  border: none;
 }
 
-form input[type='text']  { color: black; }
 form#new_command input[type='submit'] { display: none; }
