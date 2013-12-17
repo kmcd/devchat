@@ -1,5 +1,5 @@
 <form class='command'>
   <%= render partial:'commands/prompt' %>
   
-  <%= content_tag :span, auto_link(@message.input) %>
+  <%= content_tag :span, markup(@message.input) %>
 </form>
