@@ -1,10 +1,5 @@
 Devchat::Application.routes.draw do
-  resources :commands do
-    member do
-      get :create
-    end
-  end
-  
+  resources :commands
   resources :rooms
   resources :messages
   root 'rooms#show'
