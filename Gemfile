@@ -57,5 +57,6 @@ gem 'rails_autolink'
 gem 'puma'
 group(:development, :production) { gem 'foreman' }
 gem 'rails_12factor', group: :production
+gem 'dalli'
 
 ruby "2.0.0"

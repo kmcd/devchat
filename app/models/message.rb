@@ -1,2 +1,2 @@
-class Message < Command
+class Message < ActiveRecord::Base
 end

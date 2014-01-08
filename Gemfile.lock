@@ -38,6 +38,7 @@ GEM
     coffee-script-source (1.6.3)
     commands (0.2.1)
       rails (>= 3.2.0)
+    dalli (2.7.0)
     dotenv (0.9.0)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -129,6 +130,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   commands
+  dalli
   foreman
   jbuilder (~> 1.2)
   jquery-rails

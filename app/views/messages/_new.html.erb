@@ -1,5 +1,5 @@
 <%= form_for Command.new, remote:true do |form| %>
-  <%= render partial:'commands/prompt' %>
+  <%= render partial:'messages/prompt' %>
   <%= form.text_area :input, class:'cmdline', autocomplete:'off', 
     autofocus:true, rows:1 %>
   <%= form.submit %>
