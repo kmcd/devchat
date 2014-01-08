@@ -49,14 +49,18 @@ group :development do
   gem 'commands'
 end
 
+group :development, :production do
+  gem 'foreman'
+end
+
 group :test do
   gem 'turn'
 end
 
 gem 'rails_autolink'
-gem 'puma'
-group(:development, :production) { gem 'foreman' }
-gem 'rails_12factor', group: :production
+gem 'rails-observers'
 gem 'dalli'
+gem 'puma'
+gem 'rails_12factor', group: :production
 
 ruby "2.0.0"
