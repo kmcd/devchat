@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class MessageObserverTest < ActiveSupport::TestCase
-  def create_occupants(range)
-    Rails.cache.write ['room_occupants', 1], range.to_a
-  end
-  
   def setup
     Rails.cache.clear
     create_occupants 1..2

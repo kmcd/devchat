@@ -1,5 +1,6 @@
 class MessageObserver < ActiveRecord::Observer
   def after_create(message)
+    # TODO: move to PolledMessage.create message
     notifable_occupants(message).each do |occupant_id|
       Rails.cache.write ['room', message.room_id, 'user', occupant_id], true
     end

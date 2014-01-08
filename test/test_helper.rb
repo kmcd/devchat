@@ -9,7 +9,9 @@ class ActiveSupport::TestCase
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def create_occupants(range)
+    Rails.cache.write ['room_occupants', 1], range.to_a
+  end
 end
