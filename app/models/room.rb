@@ -1,2 +1,2 @@
-class Room < Command
+class Room < ActiveRecord::Base
 end
