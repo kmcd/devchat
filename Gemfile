@@ -50,6 +50,7 @@ end
 
 group :development, :test do
   gem 'commands'
+  gem 'autotest-rails'
 end
 
 group :test do
