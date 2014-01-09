@@ -40,6 +40,8 @@ GEM
       rails (>= 3.2.0)
     daemons (1.1.9)
     dalli (2.7.0)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -130,6 +132,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   commands
   dalli
+  delayed_job
   jbuilder (~> 1.2)
   jquery-rails
   looksee
