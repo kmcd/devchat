@@ -46,6 +46,7 @@ end
 
 group :development do
   gem 'looksee'
+  gem 'pry-rails'
 end
 
 group :development, :test do

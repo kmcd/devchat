@@ -1,5 +1,7 @@
 class Room < ActiveRecord::Base
-  # TODO: occupants: use postgres set data type instead of array + ruby 
+  has_many :occupants
+  has_many :messages, through: :occupants
+  has_many :users,    through: :occupants
   
   def enter(user)
     return if occupant? user

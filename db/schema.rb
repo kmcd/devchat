@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109145726) do
+ActiveRecord::Schema.define(version: 20140109193552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,17 +20,27 @@ ActiveRecord::Schema.define(version: 20140109145726) do
   create_table "messages", force: true do |t|
     t.text     "content"
     t.text     "output"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "occupant_id"
+  end
+
+  add_index "messages", ["occupant_id"], name: "index_messages_on_occupant_id", using: :btree
+
+  create_table "occupants", force: true do |t|
     t.integer  "user_id"
     t.integer  "room_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "occupants", ["room_id"], name: "index_occupants_on_room_id", using: :btree
+  add_index "occupants", ["user_id"], name: "index_occupants_on_user_id", using: :btree
+
   create_table "rooms", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "occupants",  default: [], array: true
   end
 
   create_table "users", force: true do |t|
