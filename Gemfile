@@ -46,21 +46,21 @@ end
 
 group :development do
   gem 'looksee'
-  gem 'commands'
 end
 
-group :development, :production do
-  gem 'foreman'
+group :development, :test do
+  gem 'commands'
 end
 
 group :test do
   gem 'turn'
 end
 
+group :production do
+  gem 'shelly-dependencies'
+end
+
 gem 'rails_autolink'
 gem 'rails-observers'
 gem 'dalli'
-gem 'puma'
-gem 'rails_12factor', group: :production
-
-ruby "2.0.0"
+gem 'thin'

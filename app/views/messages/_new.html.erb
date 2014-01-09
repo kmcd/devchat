@@ -1,6 +1,6 @@
-<%= form_for Command.new, remote:true do |form| %>
+<%= form_for Message.new, remote:true do |form| %>
   <%= render partial:'messages/prompt' %>
-  <%= form.text_area :input, class:'cmdline', autocomplete:'off', 
+  <%= form.text_area :content, class:'cmdline', autocomplete:'off', 
     autofocus:true, rows:1 %>
   <%= form.submit %>
 <% end %>
