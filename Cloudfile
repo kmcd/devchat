@@ -8,7 +8,7 @@ devchat:
     app1:
       size: small
       thin: 10
-      delayed_job: 1
+      # delayed_job: 1
       whenever: on
       
       databases:
