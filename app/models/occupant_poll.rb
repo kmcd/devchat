@@ -23,7 +23,7 @@ class OccupantPoll
   end
   
   def messages?
-    Rails.cache.fetch ['messages_available', occupant]
+    Rails.cache.fetch ['messages_available', room]
   end
   
   def last_polled
