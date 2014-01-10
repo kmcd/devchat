@@ -7,7 +7,7 @@ devchat:
   servers:
     app1:
       size: small
-      thin: 10
+      thin: 29
       # delayed_job: 1
       whenever: on
       
