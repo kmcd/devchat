@@ -1,6 +1,7 @@
 Devchat::Application.routes.draw do
   resources :rooms
   resources :messages
+  post 'poll', to:'poll#index'
   root 'rooms#show'
   
   # The priority is based upon order of creation: first created -> highest priority.
