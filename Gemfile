@@ -63,7 +63,6 @@ group :production do
 end
 
 gem 'rails_autolink'
-gem 'rails-observers'
 gem 'dalli'
 gem 'thin'
 # gem 'delayed_job'
