@@ -1,3 +1,4 @@
+# TODO: change to Poll
 class OccupantPoll
   attr_reader :occupant, :room
   
@@ -23,7 +24,11 @@ class OccupantPoll
   end
   
   def messages?
-    Rails.cache.fetch ['messages_available', room]
+    last_room_message > last_polled
+  end
+  
+  def last_room_message
+    Rails.cache.fetch(['last_room_message', room]) || 0
   end
   
   def last_polled
@@ -35,6 +40,6 @@ class OccupantPoll
   end
   
   def last_message_cache_key
-    ['last_message', occupant]
+    ['last_polled_message', occupant]
   end
 end

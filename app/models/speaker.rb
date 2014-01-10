@@ -15,7 +15,7 @@ class Speaker
   
   def update_cache
     message = yield
-    Rails.cache.write ['last_message', message.room.id], message.id
+    Rails.cache.write ['last_room_message', message.room.id], message.id
     message
   end
 end

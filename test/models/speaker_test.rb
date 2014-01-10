@@ -14,6 +14,6 @@ class SpeakerTest < ActiveSupport::TestCase
   
   test "update last message cache" do
     message = @tom.say 'foo'
-    assert_equal message.id, Rails.cache.fetch(['last_message', 1])
+    assert_equal message.id, Rails.cache.fetch(['last_room_message', 1])
   end
 end

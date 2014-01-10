@@ -1,4 +1,4 @@
-class AccessPolicy
+class RoomAuthorisation
   attr_reader :occupant, :room
   
   def initialize(args)
@@ -6,22 +6,22 @@ class AccessPolicy
   end
   
   def valid?
-    return cached_access_policy if cached?
-    cache_access_policy
+    return cached_authorisation if cached?
+    cache_authorisation
   end
   
   private 
   
-  def cache_access_policy
+  def cache_authorisation
     Rails.cache.write room_accessible_cache_key, occupancy_validity
     occupancy_validity
   end
   
   def occupancy_validity
-    @occupancy_validity ||= Occupancy.where(id:occupant, room_id:room).exists?
+    @occupancy_validity ||= Occupant.where(id:occupant, room_id:room).exists?
   end
   
-  def cached_access_policy
+  def cached_authorisation
     Rails.cache.fetch room_accessible_cache_key
   end
   

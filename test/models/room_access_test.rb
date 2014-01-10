@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RoomAcccessTest < ActiveSupport::TestCase
+class RoomAccessTest < ActiveSupport::TestCase
   def setup
     @access = RoomAccess.new user:User.create, room:Room.create
   end
