@@ -1,16 +1,13 @@
 class OccupantPoll
-  attr_reader :room, :user, :last_polled_message
+  attr_reader :occupant, :room
   
-  # TODO: accept session when same occupant logs in from different devices
   def initialize(args)
-    room = args[:room_id]
-    user = args[:user_id]
-    last_polled_message = args[:last_message_id]
+    @occupant, @room = args[:occupant_id], args[:room_id]
   end
   
   def messages
-    return [] unless new_messages?
-    last_polled_message! new_messages.last
+    return [] unless messages?
+    last_polled! new_messages.last
     new_messages
   end
   
@@ -18,22 +15,26 @@ class OccupantPoll
   
   def new_messages
     @new_messages ||= Message.
-      joins(occupant: :room, occupant: :user).
+      joins(:occupant).
+      where.not( occupant_id: occupant ).
       where(occupants: { room_id: room }).
-      where.not(occupants: { user_id: user }).
-      where('messages.id > ?', last_polled_message ).
-      order 'messages.id'
+      where('messages.id > ?', last_polled ).
+      order(:id)
   end
   
-  def new_messages?
-    last_room_message > last_polled_message
+  def messages?
+    Rails.cache.fetch ['messages_available', occupant]
   end
   
-  def last_polled_message!(message)
-    Rails.cache.write ['last_message', room, user], message.id
+  def last_polled
+    Rails.cache.fetch(last_message_cache_key) || 0
   end
   
-  def last_room_message
-    Rails.cache.fetch(['last_message', room]) || Float::INFINITY
+  def last_polled!(message)
+    Rails.cache.write last_message_cache_key, message.id
+  end
+  
+  def last_message_cache_key
+    ['last_message', occupant]
   end
 end

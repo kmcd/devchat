@@ -47,6 +47,7 @@ end
 group :development do
   gem 'looksee'
   gem 'pry-rails'
+  gem 'awesome_print'
 end
 
 group :development, :test do
@@ -56,6 +57,7 @@ end
 
 group :test do
   gem 'turn'
+  gem 'mocha', require:false
 end
 
 group :production do

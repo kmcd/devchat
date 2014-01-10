@@ -3,5 +3,5 @@ class Occupant < ActiveRecord::Base
   belongs_to :room
   has_many :messages
   
-  validates :user, uniqueness:{ scope: :room, message: 'should only enter once' }
+  validates :user_id, uniqueness:{ scope: :room_id, message: 'only enter once' }
 end
