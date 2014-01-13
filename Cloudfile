@@ -7,7 +7,7 @@ devchat:
   servers:
     app1:
       size: small
-      thin: 10
+      puma: 10
       
       databases:
         - postgresql
