@@ -1,4 +1,4 @@
-$('form.new_message').last().hide()
+$('form#new_message').remove()
 
 $( "<%= j render(partial:'messages/create') %>" ).appendTo $('.room')
 
