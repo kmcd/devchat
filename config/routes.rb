@@ -1,6 +1,6 @@
 Devchat::Application.routes.draw do
-  resources :rooms
-  resources :messages
+  resources :rooms # TODO: change to singular resource
+  resources :messages, only:[:create]
   post 'poll', to:'poll#index'
   root 'rooms#show'
   

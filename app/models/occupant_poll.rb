@@ -19,8 +19,7 @@ class OccupantPoll
       joins(:occupant).
       where.not( occupant_id: occupant ).
       where(occupants: { room_id: room }).
-      where('messages.id > ?', last_polled ).
-      order(:id)
+      where('messages.id > ?', last_polled )
   end
   
   def messages?

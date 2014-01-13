@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_action do
-    session[:current_user] = 1
-    session[:current_room] = 1
+    session[:current_user] = 3
+    session[:current_room] = 7
+    session[:current_occupant] = 5
+  end
+  
+  def current_occupant
+    session[:current_occupant]
   end
 end

@@ -1,5 +1,6 @@
 <%= form_for Message.new, remote:true do |form| %>
-  <%= render partial:'messages/prompt' %>
+  <span>kmcd &gt; </span>
+
   <%= form.text_area :content, class:'cmdline', autocomplete:'off', 
     autofocus:true, rows:1 %>
   <%= form.submit %>
