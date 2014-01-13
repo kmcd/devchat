@@ -11,7 +11,3 @@ devchat:
       
       databases:
         - postgresql
-      
-    app2:
-      size: small
-      thin: 10
