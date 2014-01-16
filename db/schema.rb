@@ -11,52 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110113526) do
+ActiveRecord::Schema.define(version: 20140115115004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
   create_table "messages", force: true do |t|
-    t.text     "content"
+    t.text     "input"
     t.text     "output"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "occupant_id"
-  end
-
-  add_index "messages", ["occupant_id"], name: "index_messages_on_occupant_id", using: :btree
-
-  create_table "occupants", force: true do |t|
-    t.integer  "user_id"
     t.integer  "room_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "present",    default: false
   end
-
-  add_index "occupants", ["present"], name: "index_occupants_on_present", using: :btree
-  add_index "occupants", ["room_id"], name: "index_occupants_on_room_id", using: :btree
-  add_index "occupants", ["user_id"], name: "index_occupants_on_user_id", using: :btree
 
   create_table "rooms", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  
+  create_table "transcripts", force: true do |t|
+    t.integer  "room_id"
+    t.json     "document"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

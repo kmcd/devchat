@@ -67,7 +67,7 @@ end
 gem 'rails_autolink'
 gem 'dalli'
 gem 'thin'
+gem 'rails-api'
 
-# gem "puma", ">=2.1.1"
 # gem 'delayed_job'
 # gem 'delayed_job_active_record'
