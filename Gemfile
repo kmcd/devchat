@@ -48,6 +48,7 @@ group :development do
   gem 'looksee'
   gem 'pry-rails'
   gem 'awesome_print'
+  gem 'foreman'
 end
 
 group :development, :test do
@@ -68,6 +69,5 @@ gem 'rails_autolink'
 gem 'dalli'
 gem 'thin'
 gem 'rails-api'
-
-# gem 'delayed_job'
-# gem 'delayed_job_active_record'
+gem 'redis'
+gem "sidekiq", '>= 2.7.0'

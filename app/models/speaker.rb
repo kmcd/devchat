@@ -1,21 +1,29 @@
 class Speaker
-  attr :occupant_id
+  attr :user_id, :room_id, :message
   
-  def initialize(occupant_id)
-    @occupant_id = occupant_id
+  def initialize(user_id, room_id)
+    @user_id, @user_id = user_id, room_id
   end
   
   def say(something)
-    update_cache do
-      Message.create occupant_id:occupant_id, content:something
-    end
+    return unless something.present?
+    create_message something
+    notify_chatters
+    update_transcript_history
+    message
   end
   
   private
   
-  def update_cache
-    message = yield
-    Rails.cache.write ['last_room_message', message.room.id], message.id
-    message
+  def create_message(input)
+    @message = Message.create! user_id:user_id, room_id:room_id, input:input
+  end
+
+  def notify_chatters
+    ChatNotification.new(message).enqueue
+  end
+  
+  def update_transcript_history
+    TranscriptUpdate.new(message).enqueue
   end
 end

@@ -2,18 +2,44 @@ require 'test_helper'
 
 class SpeakerTest < ActiveSupport::TestCase
   def setup
-    Rails.cache.clear
-    Message.any_instance.stubs(:room).returns stub(id:1)
-    @tom = Speaker.new 1
+    @speaker = Speaker.new 1, 1
+    @speaker.stubs :notify_chatters
+    @speaker.stubs :update_transcript_history
   end
   
-  test "send message to room" do
-    message = @tom.say 'foo'
-    assert_equal [message], Message.all
+  test "message must have content" do
+    refute @speaker.say ''
   end
   
-  test "update last message cache" do
-    message = @tom.say 'foo'
-    assert_equal message.id, Rails.cache.fetch(['last_room_message', 1])
+  test "persist message" do
+    message = @speaker.say 'hello'
+    assert message.persisted?
+  end
+  
+  test "notify other chatters" do
+    @speaker.unstub :notify_chatters
+    message, notification = mock('notification'), mock('message')
+    @speaker.stubs(:message).returns message
+    
+    ChatNotification.expects(:new).with(message).returns notification
+    notification.expects :enqueue
+    
+    @speaker.say 'hello'
+  end
+  
+  test "update chat transcript" do
+    @speaker.unstub :update_transcript_history
+    message, notification = mock('notification'), mock('message')
+    @speaker.stubs(:message).returns message
+    
+    TranscriptUpdate.expects(:new).with(message).returns notification
+    notification.expects :enqueue
+    
+    @speaker.say 'hello'
+  end
+  
+  test "returns message" do
+    message  = @speaker.say 'hello'
+    assert_equal 'hello', message.input
   end
 end
