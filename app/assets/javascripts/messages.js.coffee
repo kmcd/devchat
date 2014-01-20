@@ -8,11 +8,17 @@
 
   request: ->
     room_id = $(".room").last().data "room-id"
-    last_message_id = $(".room .message").last().data "message-id"
+    message_id = $(".room .message").last().data "message-id"
     
-    $.ajax url:'/messages/poll', type:'POST', ifModified:true, \
-      data:{ room_id:room_id, last_message_id:last_message_id }
-    
+    ajax = $.ajax url:'/messages/poll', ifModified:true, \
+      data:{ room_id:room_id, message_id:message_id }
+      
+    ajax.done = ( data, textStatus, jqXHR ) ->
+      eval(data)
+      
+    ajax.always = ->
+      Message.poll()
+      
   # TODO: move to Keyboard handler class
   create: ->
     # TODO: ensure this works for all browsers & key combinations; eg shift

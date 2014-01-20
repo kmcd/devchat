@@ -1,4 +1,6 @@
-<%= div_for(message, data:{ 'message-id' => message.id } ) do %>
-  <%= content_tag :div, message.user.name, class:'user' %>
-  <%= content_tag :div, message.input, class:'input' %>
+<% cache message do %>
+  <%= div_for(message, data:{ 'message-id' => message.id } ) do %>
+    <%= content_tag :div, message.user.name, class:'user' %>
+    <%= content_tag :div, message.input, class:'input' %>
+  <% end %>
 <% end %>

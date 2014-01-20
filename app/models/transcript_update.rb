@@ -3,6 +3,5 @@ class TranscriptUpdate
   end
   
   def update
-    # TODO: enqueue this
   end
 end

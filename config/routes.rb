@@ -2,7 +2,7 @@ Devchat::Application.routes.draw do
   resources :rooms
   
   resources :messages do
-    collection { post :poll }
+    collection { get :poll }
   end
   
   # TODO: why is this not a POST request?

@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  helper_method :listener
   # FIXME: authorisation
   
   def create
@@ -6,9 +7,11 @@ class MessagesController < ApplicationController
   end
   
   def poll
-    # TODO: cache room_id, last_message_id
-    # TODO: set 304 modified, etags headers
-    @messages = listener.messages
+    if listener.messages?
+      fresh_when listener.last_modified_etags
+    else
+      render nothing:true
+    end
   end
   
   private
@@ -18,6 +21,7 @@ class MessagesController < ApplicationController
   end
   
   def listener
-    Listener.new room_id:params[:room_id], last_message_id:params[:last_message_id]
+    @listener ||= Listener.new room_id:params[:room_id], 
+      message_id:params[:message_id]
   end
 end

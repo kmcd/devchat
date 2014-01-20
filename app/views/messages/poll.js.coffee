@@ -1,3 +1,1 @@
-$('#room_1').append "<%= j render(partial:'message', collection:@messages) %>"
-
-Message.poll()
+$("#room_<%= listener.room_id %>").append "<%= j render(partial:'message', collection:listener.messages) %>"
