@@ -25,4 +25,8 @@ class ChatNotification
     ApplicationController.new.
       render_to_string partial:'messages/update', object:message
   end
+
+  def foo
+    
+  end
 end

@@ -6,11 +6,9 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Inconsolata", media: "all" %>
-
 </head>
 <body>
-
-<%= yield %>
-
+  <%= link_to "Sign in with Github", "/auth/github" %>
+  <%= yield %>
 </body>
 </html>

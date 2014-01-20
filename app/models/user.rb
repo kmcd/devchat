@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :occupancies, class_name:'Occupant'
-  has_many :rooms,    through: :occupancies
-  has_many :messages, through: :occupancies
+  has_many :messages
+  has_many :rooms
+  
+  def name
+    RecursiveOpenStruct.new(info).extra.raw_info.login
+  end
 end

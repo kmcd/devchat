@@ -1,8 +1,13 @@
 Devchat::Application.routes.draw do
-  resources :rooms # TODO: change to singular resource
-  resources :messages, only:[:create]
-  post 'poll', to:'poll#index'
-  root 'rooms#show'
+  resources :rooms
+  
+  resources :messages do
+    collection { post :poll }
+  end
+  
+  # TODO: why is this not a POST request?
+  get 'auth/github/callback', to: 'sessions#create'
+  root 'rooms#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

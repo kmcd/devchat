@@ -26,4 +26,5 @@ class Speaker
   def update_transcript_history
     TranscriptUpdate.new(message).enqueue
   end
+
 end

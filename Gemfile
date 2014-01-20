@@ -68,6 +68,7 @@ end
 gem 'rails_autolink'
 gem 'dalli'
 gem 'thin'
-gem 'rails-api'
 gem 'redis'
 gem "sidekiq", '>= 2.7.0'
+gem 'omniauth-github'
+gem 'recursive-open-struct'
