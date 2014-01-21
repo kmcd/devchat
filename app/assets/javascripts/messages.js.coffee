@@ -20,17 +20,16 @@
       Message.poll()
       
   # TODO: move to Keyboard handler class
-  create: ->
+  sumbit_on_return: ->
     # TODO: ensure this works for all browsers & key combinations; eg shift
     RETURN_KEY = 13
     
-    $('body').delegate '#new_message #message_content', 'keydown', (event) ->
+    $('body').delegate '#new_message #message_input', 'keydown', (event) ->
       return unless event.which == RETURN_KEY
-      
-      # TODO: update previous command before submit to prevent clearing effect
-      
+      event.preventDefault()
       $('#new_message').submit()
       true
-      
+
 $(document).ready ->
-  Message.poll()
+  # Message.poll()
+  Message.sumbit_on_return()

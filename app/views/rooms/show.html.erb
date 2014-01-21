@@ -1,3 +1,4 @@
 <%= div_for(@room, data:{ 'room-id' => @room.id } ) do %>
   <%= render partial:'messages/message', collection:@room.messages %>
+  <%= render partial:'messages/new' %>
 <% end %>

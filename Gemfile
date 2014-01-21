@@ -39,7 +39,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+# gem 'capistrano', group: :development,t
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -53,18 +53,19 @@ end
 group :development, :test do
   gem 'commands'
   gem 'autotest-rails'
-  gem 'guard'
+  gem 'guard-process'
   gem 'guard-livereload'
   gem 'guard-bundler'
-  gem 'guard-test'
   gem 'guard-rails'
+  gem 'guard-migrate'
 end
 
+
 group :test do
-  gem 'turn'
   gem 'mocha', require:false
   gem 'capybara'
   gem 'poltergeist'
+  gem 'minitest-reporters'
 end
 
 group :production do

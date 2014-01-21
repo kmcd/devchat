@@ -1,7 +1,9 @@
-<%= form_for Message.new, remote:true do |form| %>
-  <span>kmcd &gt; </span>
-
-  <%= form.text_area :content, class:'cmdline', autocomplete:'off', 
-    autofocus:true, rows:1 %>
-  <%= form.submit %>
-<% end %>
+<div class="new message">
+  <div class="user">kmcd</div>
+  <div class="input">
+    <%= form_for Message.new, remote:true do |form| %>
+      <%= form.text_area :input, autocomplete:'off', autofocus:true, rows:1 %>
+      <%= form.submit %>
+    <% end %>
+  </div>
+</div>

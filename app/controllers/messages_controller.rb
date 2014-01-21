@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # FIXME: authorisation
   
   def create
-    @message = speaker.say params[:message][:content]
+    @message = speaker.say params[:message][:input]
   end
   
   def poll
@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   private
   
   def speaker
-    Speaker.new current_occupant
+    Speaker.new User.first.id, Room.first.id
   end
   
   def listener

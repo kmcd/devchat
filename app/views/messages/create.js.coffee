@@ -1,5 +1,3 @@
-$('form#new_message').remove()
-
-$( "<%= j render(partial:'messages/create') %>" ).appendTo $('.room')
-
-$( "<%= j render partial:'messages/new' %>" ).appendTo $('.room')
+$( '.new.message' ).remove()
+$( "<%= j render partial:'message', object:@message %>" ).appendTo $('.room')
+$( "<%= j render partial:'new' %>" ).appendTo $('.room')

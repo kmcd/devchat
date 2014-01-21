@@ -3,6 +3,10 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'mocha/setup'
 require 'capybara/rails'
+require 'minitest/autorun' # from minitest
+require "minitest/reporters"
+
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
