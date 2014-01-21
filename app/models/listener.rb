@@ -4,7 +4,8 @@ class Listener
   validates :room_id, :message_id, presence:true, numericality:true
   
   def initialize(room_id:nil,message_id:nil)
-    @room_id, @message_id = room_id, message_id
+    @room_id = room_id 
+    @message_id = message_id.present? ? message_id : 0
   end
   
   def messages

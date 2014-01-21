@@ -48,17 +48,23 @@ group :development do
   gem 'looksee'
   gem 'pry-rails'
   gem 'awesome_print'
-  gem 'foreman'
 end
 
 group :development, :test do
   gem 'commands'
   gem 'autotest-rails'
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-bundler'
+  gem 'guard-test'
+  gem 'guard-rails'
 end
 
 group :test do
   gem 'turn'
   gem 'mocha', require:false
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 group :production do
@@ -68,7 +74,5 @@ end
 gem 'rails_autolink'
 gem 'dalli'
 gem 'thin'
-gem 'redis'
-gem "sidekiq", '>= 2.7.0'
 gem 'omniauth-github'
 gem 'recursive-open-struct'
