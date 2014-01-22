@@ -8,7 +8,7 @@
 
   request: ->
     room_id = $(".room").last().data "room-id"
-    message_id = $(".room .message").last().data "message-id"
+    message_id = $(".room .message").not('.new').last().data "message-id"
     
     ajax = $.ajax url:'/messages/poll', ifModified:true, \
       data:{ room_id:room_id, message_id:message_id }
@@ -31,5 +31,5 @@
       true
 
 $(document).ready ->
-  # Message.poll()
+  Message.poll()
   Message.sumbit_on_return()

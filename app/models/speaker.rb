@@ -2,7 +2,7 @@ class Speaker
   attr :user_id, :room_id, :message
   
   def initialize(user_id, room_id)
-    @user_id, @user_id = user_id, room_id
+    @user_id, @room_id = user_id, room_id
   end
   
   def say(something)

@@ -16,7 +16,7 @@ class MessagePollingTest < ActionDispatch::IntegrationTest
   
   test "no messages in an empty room" do
     visit room_path(@room)
-    assert page.has_no_css?('.room .message')
+    assert page.has_no_css?('.room .message:not(.new)')
   end
   
   test "after creation message appears in room" do
