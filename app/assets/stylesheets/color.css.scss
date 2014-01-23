@@ -3,3 +3,12 @@ textarea {
   color: black;
   border: none;
 }
+
+.room .user {
+  color: gray;
+  border-right: thin solid whitesmoke;
+}
+
+.room .timestamp {
+  color: lightgray;
+}

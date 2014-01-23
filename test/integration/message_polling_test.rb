@@ -22,6 +22,7 @@ class MessagePollingTest < ActionDispatch::IntegrationTest
   test "after creation message appears in room" do
     visit room_path(@room)
     message = @room.messages.create! user:@user, input:'hi!'
+    page.save_screenshot 'screenshot.png'
     assert page.has_css?(".room .message[data-message-id='#{message.id}']")
   end
 end

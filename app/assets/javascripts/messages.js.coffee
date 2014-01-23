@@ -19,16 +19,14 @@
     ajax.always = ->
       Message.poll()
       
-  # TODO: move to Keyboard handler class
   sumbit_on_return: ->
-    # TODO: ensure this works for all browsers & key combinations; eg shift
-    RETURN_KEY = 13
-    
-    $('body').delegate '#new_message #message_input', 'keydown', (event) ->
-      return unless event.which == RETURN_KEY
-      event.preventDefault()
+    $('body').delegate '#message_input', 'keydown', (event) ->
+      return_pressed = event.which == 13
+      input_not_blank = /.+/.test $('#message_input').val()
+      return unless return_pressed && input_not_blank
       $('#new_message').submit()
-      true
+      $('#message_input').val ''
+      false
 
 $(document).ready ->
   Message.poll()

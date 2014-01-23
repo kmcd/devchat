@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:chat_timestamp] = "%Y %b %d %a %R"

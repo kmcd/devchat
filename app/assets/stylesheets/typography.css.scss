@@ -2,3 +2,13 @@ html, html * {
   font-family: "Inconsolata", "courier new", monospace;
   font-size: 16px;
 }
+
+.message {
+  .user, .input, .timestamp {
+    vertical-align: bottom;
+  }
+
+  .timestamp * {
+    font-size: x-small;
+  }
+}
